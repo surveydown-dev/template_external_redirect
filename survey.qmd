@@ -1,0 +1,134 @@
+---
+# General Settings
+format: html
+echo: false
+warning: false
+
+# Theme Settings
+theme: default
+barposition: top
+footer-left: "Made with [surveydown](https://surveydown.org)"
+footer-right: '[<i class="bi bi-github"></i> Source Code](https://github.com/surveydown-dev/template_external_redirect)'
+
+# Survey Settings
+use-cookies: false
+auto-scroll: false
+rate-survey: false
+system-language: en
+highlight-unanswered: true
+highlight-color: blue
+capture-metadata: true
+all-questions-required: false
+required-questions:
+  - screening_question
+---
+
+```{r}
+library(surveydown)
+```
+
+::: {.sd_page id=welcome}
+
+# Template - External Redirect
+
+::: {.callout-important}
+
+To properly showcase this survey, add this to your URL and press enter:
+
+```{r}
+#| echo: true
+#| eval: false
+
+/?id_a=a123&id_b=b234&id_c=c345
+```
+
+For example, if your original URL is:
+
+`http://my.url`
+
+Then your new URL should be:
+
+`http://my.url/?id_a=a123&id_b=b234&id_c=c345`
+
+:::
+
+::: {.callout-tip}
+
+1.  A **static** button is defined in `survey.qmd`. It provides a static, hard-coded target URL.
+2.  A **reactive** button is defined in the `server` part of `app.R`. It grabs parameters from the URL and allows you to use them to construct a new redirect URL.
+
+:::
+
+In this survey, we showcase both the static and reactive redirections.
+
+```{r}
+sd_question(
+  type  = "mc",
+  id    = "screening_question",
+  label = "**Which page do you want to go to?**",
+  option = c(
+    "Normal ending with static redirect button"      = "normal_end_1",
+    "Normal ending with reactive redirect button"    = "normal_end_2",
+    "Screenout ending with reactive redirect button" = "screenout"
+  )
+)
+
+sd_next()
+```
+
+:::
+
+::: {.sd_page id=end_page_1}
+
+## This it the normal ending page with static redirect buttons.
+
+This is a static redirect button to Google.
+
+```{r}
+# Static redirect
+sd_redirect(
+  id     = "redirect",
+  url    = "https://www.google.com",
+  label  = "Click to Google",
+  button = TRUE
+)
+```
+
+This is a static redirect button with a count-down.
+
+```{r}
+# Static redirect with countdown delay
+sd_redirect(
+  id     = "redirect_countdown",
+  url    = "https://www.google.com",
+  label  = "Click to Google or Wait for 10 Seconds",
+  button = TRUE,
+  delay  = 10
+)
+```
+
+:::
+
+::: {.sd_page id=end_page_2}
+
+## This it the normal ending page with reactive redirect button.
+
+This is a reactive redirect button that contains a customized redirect url, including url parameters and an indicator of `status=0`.
+
+```{r}
+sd_output("redirect_normal")
+```
+
+:::
+
+::: {.sd_page id=screenout_page}
+
+## This it the screenout page with reactive redirect button.
+
+This is a reactive redirect button that contains a customized redirect url, including url parameters and an indicator of `status=1`.
+
+```{r}
+sd_output("redirect_screenout")
+```
+
+:::
