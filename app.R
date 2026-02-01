@@ -86,10 +86,10 @@ server <- function(input, output, session) {
     )
 
     # Define any conditional skip logic here (skip to page if a condition is true)
-    sd_skip_forward(
-        input$screening_question == "normal_end_1" ~ "end_page_1",
-        input$screening_question == "normal_end_2" ~ "end_page_2",
-        input$screening_question == "screenout" ~ "screenout_page"
+    sd_skip_if(
+        sd_value("screening_question") == "normal_end_1" ~ "end_page_1",
+        sd_value("screening_question") == "normal_end_2" ~ "end_page_2",
+        sd_value("screening_question") == "screenout" ~ "screenout_page"
     )
 
     # Run surveydown server and define database
