@@ -73,7 +73,7 @@ sd_question(
   )
 )
 
-sd_next()
+sd_nav()
 ```
 
 :::
