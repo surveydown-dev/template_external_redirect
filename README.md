@@ -4,8 +4,6 @@ A reactive question template with redirectional links, accepting URL parameters.
 
 [![Walkthrough recording](video-thumbnail.png)](https://cdn.jsdelivr.net/gh/surveydown-dev/template_external_redirect@main/video-recording.mp4)
 
-*Click the image above to play the recording.*
-
 ### Template page
 
 https://surveydown.org/templates/external_redirect
