@@ -1,12 +1,10 @@
 A reactive question template with redirectional links, accepting URL parameters.
 
-### 🎬 Video
+### 🎬 Walkthrough Recording
 
-This template has no live online demo. A video walkthrough is provided instead.
+[![Walkthrough recording](video-thumbnail.jpg)](https://github.com/surveydown-dev/template_external_redirect/blob/main/video-recording.mp4)
 
-<video src="https://github.com/surveydown-dev/template_external_redirect/raw/main/video-recording.mp4" controls width="100%"></video>
-
-[▶ Watch the walkthrough](https://github.com/surveydown-dev/template_external_redirect/raw/main/video-recording.mp4)
+*Click the image above to play the recording.*
 
 ### Template page
 
